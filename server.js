@@ -13,16 +13,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
+//returns notes.html file
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, './public/index.html')));
 
-app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, './notes/index.html')));
-
+//returns index.html file
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, './public/index.html')));
 
+//do i need this?
+app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, './notes/index.html')));
+
+
 //ask tutor about slice
+//reads db.json and return all notes as JSON
 app.get('/api/notes', (req, res) => {
 	res.json(notesData.slice(1))
 	});
+
+//need app.post '/api/notes'
 
 	// not finsished
 app.delete('/api/notes/:id', (req, res) => {
