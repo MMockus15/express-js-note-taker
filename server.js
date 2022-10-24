@@ -5,7 +5,8 @@ const fs = require('fs');
 
 const notesData = require('./db/db.json');
 
-// const PORT = 3001;
+//do i need the port set up?
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 // set up express app to handle data parsing
@@ -19,7 +20,7 @@ app.get('/', (req, res) => res.sendFile(path.join(__dirname, './public/index.htm
 //returns index.html file
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, './public/index.html')));
 
-//do i need this?
+// GET Route for homepage
 app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, './notes/index.html')));
 
 
@@ -30,9 +31,14 @@ app.get('/api/notes', (req, res) => {
 	});
 
 //need app.post '/api/notes'
+app.post('/api/notes', (req, res) => {
+	const newNote = createNewNote(req.body, notesData);
+	res.json(newNote);
+})
 
 	// not finsished
 app.delete('/api/notes/:id', (req, res) => {
+	console.log(req.body);
 	fs.readFile('.db/db.json')
 });
 // param with id of note to delete
@@ -43,7 +49,4 @@ app.delete('/api/notes/:id', (req, res) => {
 
 
 
-app.listen(PORT, () => {
-console.log('App server on PORT: ${PORT}')
-});
-
+app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
