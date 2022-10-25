@@ -1,11 +1,12 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-// pick another npm package to give unique ids to notes
 
-const notesData = require('./db/db.json');
+// Helper method for generating unique ids
+const uuidHelper = require('mongo-uuid-helper');
 
-//do i need the port set up?
+// const notesData = require('./db/db.json');
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -15,10 +16,10 @@ app.use(express.json());
 app.use(express.static('public'));
 
 //returns notes.html file
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, './public/index.html')));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, './notes.html')));
 
 //returns index.html file
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, './public/index.html')));
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, './index.html')));
 
 // GET Route for homepage
 app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, './notes/index.html')));
@@ -49,4 +50,6 @@ app.delete('/api/notes/:id', (req, res) => {
 
 
 
-app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`App listening at http://localhost:${PORT} 🚀`)
+);
