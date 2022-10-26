@@ -6,15 +6,16 @@ const path = require("path");
 
 //reads db.json and return all notes as JSON
 router.get("/notes", (req, res) => {
-  fs.readFile(path.join(__dirname, "../db/db.json"), "utf8", (err, data) => {
+  fs.readFile('db/db.json', 'utf8', (err, data) => {
     if (err) {
       console.log(err);
     } else {
+		console.log(data);
       let savedNotes = JSON.parse(data);
       res.json(savedNotes);
     }
-  });
-});
+  }
+);
 
 router.post("/notes", (req, res) => {
   const { title, text } = req.body;
@@ -29,7 +30,7 @@ router.post("/notes", (req, res) => {
     //give each a unique id
     //add to notes.js router
     let savedNotes = [];
-    fs.readFile(path.join(__dirname, "../db/db.json"), "utf8", (err, data) => {
+    fs.readFile('db/db.json', 'utf8', (err, data) => {
       if (err) {
         console.log(err);
       } else {
@@ -49,8 +50,8 @@ router.post("/notes", (req, res) => {
 });
 
 // delete note with specified id
-router.delete("/api/notes/:id", (req, res) => {
-  fs.readFile(path.join(__dirname, "../db/db.json"), "utf8", (err, data) => {
+router.delete("/notes/:id", (req, res) => {
+  fs.readFile('db/db.json', 'utf8', (err, data) => {
     if (err) {
     } else {
       let savedNotes = JSON.parse(data);
@@ -68,7 +69,7 @@ router.delete("/api/notes/:id", (req, res) => {
       }
     }
   }
-  );
+)})
 });
 
 module.exports = router;
