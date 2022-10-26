@@ -1,13 +1,13 @@
 const router = require("express").Router();
-const db = require("../db/db.json");
+// const db = require("../db/db.json");
 const fs = require("fs");
 const uuid = require("uuid");
 const path = require("path");
 
 //reads db.json and return all notes as JSON
-router.get("/notes", (req, res) => {
+router.get('/notes', (req, res) => {
   fs.readFile(
-	path.join(__dirname, "db/db.json"), "utf8", (err, data) => {
+	path.join(__dirname, "../db/db.json"), "utf8", (err, data) => {
     if (err) { console.log(err);
     } else {
       let savedNotes = JSON.parse(data);
@@ -16,7 +16,7 @@ router.get("/notes", (req, res) => {
   });
 });
 
-router.post("/notes", (req, res) => {
+router.post('/notes', (req, res) => {
   const { title, text } = req.body;
   if ( title && text ) {
   const notes = {
@@ -30,14 +30,14 @@ router.post("/notes", (req, res) => {
   //add to notes.js router
   let savedNotes = [];
   fs.readFile(
-	path.join(__dirname, "../..db/db.json"), "utf8",
+	path.join(__dirname, "../db/db.json"), "utf8",
 	(err, data) => {
     if (err) { console.log(err);
     } else {
       savedNotes = JSON.parse(data);
       savedNotes.push(notes);
       fs.writeFileSync(
-        path.join(__dirname, "../..db/db.json"),
+        path.join(__dirname, "../db/db.json"),
         JSON.stringify(savedNotes),
         "utf8",
         );
