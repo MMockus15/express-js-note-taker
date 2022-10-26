@@ -26,7 +26,7 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 ## Screenshot:
 
-![weather-app-screen-shot](./assets/images/weather-dashboard.png)
+![Express.js Note Taker](.readme-images/note-taker.png)
 
 ## Questions?:
 
