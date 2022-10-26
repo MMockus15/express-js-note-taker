@@ -51,9 +51,32 @@ router.post('/notes', (req, res) => {
 });
 
 // not finsished
-// router.delete("/api/notes/:id", (req, res) => {
-//   console.log(req.body);
-//   fs.readFile(".db/db.json");
+router.delete("/api/notes/:id", (req, res) => {
+	  fs.readFile(
+		path.join(__dirname, "../db/db.json"), "utf8",
+		(err, data) => {
+	    if (err) { console.log(err);
+	    } else {
+			let savedNotes = JSON.parse(data);
+			const notesIndex = myArray.findIndex(({ id }) => id === req.params.id);
+			if (notesIndex >= 0) {
+			  myArray.splice(notesIndex, 1);
+			  //rewrite notes to db.json
+			  fs.writeFileSync(
+				path.join(__dirname, "../db/db.json"), "utf8",
+
+			  );
+			  res.json(savedNotes);
+  }
+}
+}
+)
+}
+);
+
+//      let savedNotes = JSON.parse(data);
+// 	 const notesId = 
+
 // });
 // param with id of note to delete
 // need filter to run thru notes and find ones with given id property
