@@ -10,7 +10,6 @@ router.get("/notes", (req, res) => {
     if (err) {
       console.log(err);
     } else {
-		console.log(data);
       let savedNotes = JSON.parse(data);
       res.json(savedNotes);
     }
@@ -57,18 +56,20 @@ router.delete("/notes/:id", (req, res) => {
       let savedNotes = JSON.parse(data);
       // need filter to run thru notes and find ones with given id property
       const noteId = req.params.id;
+	  //push saved notes into empty array
+	//   let notesArray = savedNotes[];
       //filter thru savedNotes array for notes with id
       for (var i = 0; i < savedNotes.length; i++) {
         if (noteId === savedNotes[i].id) {
           savedNotes.splice(i, 1);
           //rewrite notes to db.json
-          fs.writeFileSync(path.join(__dirname, "../db/db.json"), "utf8");
-		  JSON.stringify(savedNotes), "utf-8";
-          res.json(savedNotes);
+          fs.writeFileSync(path.join(__dirname, "../db/db.json"), JSON.stringify(savedNotes)
+		  )
+		  res.json(savedNotes);
         }
-      }
-    }
-  }
+	}
+}
+}
 )})
 });
 
