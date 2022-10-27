@@ -57,7 +57,7 @@ router.delete("/notes/:id", (req, res) => {
       // need filter to run thru notes and find ones with given id property
       const noteId = req.params.id;
       //filter thru savedNotes array for notes with id
-      for (var i = 0; i < savedNotes.length; i++) {
+      for (var i = 0; i = savedNotes.length; i++) {
         if (noteId === savedNotes[i].id) {
           savedNotes.splice(i, 1);
           //rewrite notes to db.json
