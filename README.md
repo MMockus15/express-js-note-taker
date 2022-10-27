@@ -24,9 +24,13 @@ THEN that note appears in the right-hand column
 WHEN I click on the Write icon in the navigation at the top of the page
 THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
 
-## Screenshot:
+## Screenshots:
+The following images show the web application's appearance and functionality:
 
-![Express.js Note Taker](./assets/images/readme-images/note-taker.png)
+![Existing notes are listed in the left-hand column with empty fields on the right-hand side for the new note’s title and text.](./readme-images/note-taker-blank.png)
+
+![Note titled “The Sun” reads, “Is Hot!,” with other notes listed on the left.](./readme-images/note-taker-note.png)
+
 
 ## Questions?:
 
