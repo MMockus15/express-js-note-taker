@@ -43,4 +43,4 @@ The following images show the web application's appearance and functionality:
 
 ---
 
-[deployed site](https://mmockus15.github.io/weather-dashboard/)
+[deployed site](https://mmockus15.github.io/express-js-note-taker/)
