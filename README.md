@@ -29,7 +29,7 @@ The following images show the web application's appearance and functionality:
 
 ![Existing notes are listed in the left-hand column with empty fields on the right-hand side for the new note’s title and text.](./readme-images/note-taker-blank.png)
 
-![Note titled “The Sun” reads, “Is Hot!,” with other notes listed on the left.](./readme-images/note-taker-note.png)
+![Note titled “The Moon” reads, “is marvelous,” with other notes listed on the left.](./readme-images/note-taker-note.png)
 
 
 ## Questions?:
@@ -43,4 +43,4 @@ The following images show the web application's appearance and functionality:
 
 ---
 
-[deployed site](https://mmockus15.github.io/express-js-note-taker/)
+[deployed site](https://damp-woodland-13447.herokuapp.com)
